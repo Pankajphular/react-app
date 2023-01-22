@@ -11,6 +11,5 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: "12.x"
-      - run: npm ci    #install dependency
-      # - run: npm run format:check    check code formatting
-      - run: npm test -- --coverage    #run automate test
+      - run: npm install
+      - run: npm test -- --coverage 
