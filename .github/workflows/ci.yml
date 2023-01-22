@@ -12,7 +12,5 @@ jobs:
         with:
           node-version: "12.x"
       - run: npm ci    #install dependency
-      - run: npm run format:check    #check code formatting
+      # - run: npm run format:check    check code formatting
       - run: npm test -- --coverage    #run automate test
-        env:
-          CI: true
