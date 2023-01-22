@@ -9,6 +9,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: cache node_modules
+        uses: actions/cache@v1
+        with:
+          path: ~/.npm
+          key: ${{runner.os}}-node-${{hashFiles('**/package-lock.json/')}}
+          restore-key: |
+            ${{runner.os}}-node-
       - name: Use Nodejs
         uses: actions/setup-node@v3
         with:
@@ -17,5 +24,4 @@ jobs:
       - name: build projects
         if: github.event_name == 'push'
         run: |
-          npm run build
           node -v
